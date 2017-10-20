@@ -35,6 +35,14 @@ namespace twozerofoureight
             if (i != 0)
             {
                 l.Text = Convert.ToString(i);
+                if (i.ToString().Length >= 3)
+                                    {
+                    l.Font = new Font("Microsoft Sans Serif", 16);
+                                   }
+                                else 
+                      {
+                    l.Font = new Font("Microsoft Sans Serif", 20);
+                                    }
             } else {
                 l.Text = "";
             }
@@ -59,6 +67,15 @@ namespace twozerofoureight
         }
         private void UpdateBoard(int[,] board)
         {
+            int sum = 0;
+                        for (int i = 0; i <= 3; i++)
+                            {
+                                for (int j = 0; j <= 3; j++)
+                                    {
+                    sum += board[i, j];
+                                    }
+                            }
+            score.Text = sum.ToString();
             UpdateTile(lbl00,board[0, 0]);
             UpdateTile(lbl01,board[0, 1]);
             UpdateTile(lbl02,board[0, 2]);
@@ -97,5 +114,37 @@ namespace twozerofoureight
             controller.ActionPerformed(TwoZeroFourEightController.DOWN);
         }
 
+        private void lbl00_Click(object sender, EventArgs e)
+        {
+
+        }
+     
+
+                protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+         {
+             switch (keyData)
+             {
+                 case Keys.Up:
+                     controller.ActionPerformed(TwoZeroFourEightController.UP);
+                     break;
+                 case Keys.Right:
+                     controller.ActionPerformed(TwoZeroFourEightController.RIGHT);
+                     break;
+                 case Keys.Down:
+                     controller.ActionPerformed(TwoZeroFourEightController.DOWN);
+                     break;
+                 case Keys.Left:
+                     controller.ActionPerformed(TwoZeroFourEightController.LEFT);
+                     break;
+                 default:
+                     break;
+             }
+             return base.ProcessCmdKey(ref msg, keyData);
+         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
