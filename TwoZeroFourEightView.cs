@@ -35,12 +35,14 @@ namespace twozerofoureight
             if (i != 0)
             {
                 l.Text = Convert.ToString(i);
-                if (i.ToString().Length >= 3)
-                                    {
+                if (i.ToString().Length == 4)
+                {
+                    l.Font = new Font("Microsoft Sans Serif", 14);
+                }
+                if (i.ToString().Length == 3){
                     l.Font = new Font("Microsoft Sans Serif", 16);
                                    }
-                                else 
-                      {
+                if (i.ToString().Length == 2){
                     l.Font = new Font("Microsoft Sans Serif", 20);
                                     }
             } else {
@@ -67,15 +69,15 @@ namespace twozerofoureight
         }
         private void UpdateBoard(int[,] board)
         {
-            int sum = 0;
+            int sumScore = 0;
                         for (int i = 0; i <= 3; i++)
                             {
                                 for (int j = 0; j <= 3; j++)
                                     {
-                    sum += board[i, j];
+                    sumScore += board[i, j];
                                     }
                             }
-            score.Text = sum.ToString();
+            score.Text = sumScore.ToString();
             UpdateTile(lbl00,board[0, 0]);
             UpdateTile(lbl01,board[0, 1]);
             UpdateTile(lbl02,board[0, 2]);
